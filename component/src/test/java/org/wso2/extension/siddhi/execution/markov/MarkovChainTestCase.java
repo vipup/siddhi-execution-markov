@@ -79,50 +79,52 @@ public class MarkovChainTestCase {
                 for (Event event : inEvents) {
                     countDownLatch.countDown();
                     count++;
-                    switch (count) {
+                    Object data3 = event.getData(3);
+					Object data4 = event.getData(4);
+					switch (count) {
                         case 1:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 2:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 3:
-                            AssertJUnit.assertEquals(0.3, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.3, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 4:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 5:
-                            AssertJUnit.assertEquals(0.6, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.6, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 6:
-                            AssertJUnit.assertEquals(0.6000000000000001, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.6000000000000001, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 7:
-                            AssertJUnit.assertEquals(0.6, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.6, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 8:
-                            AssertJUnit.assertEquals(0.3, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.3, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 9:
-                            AssertJUnit.assertEquals(0.3, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.3, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 10:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 11:
-                            AssertJUnit.assertEquals(0.3, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.3, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         default:
                             AssertJUnit.fail();
@@ -134,17 +136,17 @@ public class MarkovChainTestCase {
         InputHandler inputHandler = executionPlanRuntime.getInputHandler("InputStream");
         executionPlanRuntime.start();
 
-        inputHandler.send(new Object[]{"1", "testState01"});
-        inputHandler.send(new Object[]{"2", "testState02"});
-        inputHandler.send(new Object[]{"1", "testState03"});
-        inputHandler.send(new Object[]{"3", "testState01"});
-        inputHandler.send(new Object[]{"3", "testState02"});
-        inputHandler.send(new Object[]{"1", "testState01"});
-        inputHandler.send(new Object[]{"1", "testState02"});
-        inputHandler.send(new Object[]{"2", "testState01"});
-        inputHandler.send(new Object[]{"2", "testState03"});
-        inputHandler.send(new Object[]{"4", "testState01"});
-        inputHandler.send(new Object[]{"4", "testState03"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState02"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState03"});
+        inputHandler_send( inputHandler, new Object[]{"3", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"3", "testState02"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState02"});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState03"});
+        inputHandler_send( inputHandler, new Object[]{"4", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"4", "testState03"});
 
         countDownLatch.await(1000, MILLISECONDS);
         AssertJUnit.assertEquals("Number of success events", 11, count);
@@ -176,30 +178,32 @@ public class MarkovChainTestCase {
                 for (Event event : inEvents) {
                     countDownLatch.countDown();
                     count++;
-                    switch (count) {
+                    Object data3 = event.getData(3);
+					Object data4 = event.getData(4);
+					switch (count) {
                         case 1:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(true, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(true, data4);
                             break;
                         case 2:
-                            AssertJUnit.assertEquals(0.5, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.5, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 3:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(true, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(true, data4);
                             break;
                         case 4:
-                            AssertJUnit.assertEquals(0.3333333333333333, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.3333333333333333, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 5:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 6:
-                            AssertJUnit.assertEquals(0.5, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.5, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         default:
                             AssertJUnit.fail();
@@ -211,17 +215,17 @@ public class MarkovChainTestCase {
         InputHandler inputHandler = executionPlanRuntime.getInputHandler("InputStream");
         executionPlanRuntime.start();
 
-        inputHandler.send(new Object[]{"1", "testState01"});
-        inputHandler.send(new Object[]{"2", "testState02"});
-        inputHandler.send(new Object[]{"1", "testState03"});
-        inputHandler.send(new Object[]{"3", "testState01"});
-        inputHandler.send(new Object[]{"3", "testState02"});
-        inputHandler.send(new Object[]{"1", "testState01"});
-        inputHandler.send(new Object[]{"1", "testState02"});
-        inputHandler.send(new Object[]{"2", "testState01"});
-        inputHandler.send(new Object[]{"2", "testState03"});
-        inputHandler.send(new Object[]{"4", "testState01"});
-        inputHandler.send(new Object[]{"4", "testState03"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState02"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState03"});
+        inputHandler_send( inputHandler, new Object[]{"3", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"3", "testState02"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState02"});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState03"});
+        inputHandler_send( inputHandler, new Object[]{"4", "testState01"});
+        inputHandler_send( inputHandler, new Object[]{"4", "testState03"});
 
         countDownLatch.await(1000, MILLISECONDS);
         AssertJUnit.assertEquals("Number of success events", 6, count);
@@ -253,30 +257,32 @@ public class MarkovChainTestCase {
                 for (Event event : inEvents) {
                     countDownLatch.countDown();
                     count++;
-                    switch (count) {
+                    Object data3 = event.getData(3);
+					Object data4 = event.getData(4);
+					switch (count) {
                         case 1:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(true, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(true, data4);
                             break;
                         case 2:
-                            AssertJUnit.assertEquals(0.5, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.5, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 3:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(true, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(true, data4);
                             break;
                         case 4:
-                            AssertJUnit.assertEquals(0.3333333333333333, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.3333333333333333, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 5:
-                            AssertJUnit.assertEquals(0.0, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.0, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         case 6:
-                            AssertJUnit.assertEquals(0.3333333333333333, event.getData(3));
-                            AssertJUnit.assertEquals(false, event.getData(4));
+                            AssertJUnit.assertEquals(0.3333333333333333, data3);
+                            AssertJUnit.assertEquals(false, data4);
                             break;
                         default:
                             AssertJUnit.fail();
@@ -288,22 +294,29 @@ public class MarkovChainTestCase {
         InputHandler inputHandler = executionPlanRuntime.getInputHandler("InputStream");
         executionPlanRuntime.start();
 
-        inputHandler.send(new Object[]{"1", "testState01", true});
-        inputHandler.send(new Object[]{"2", "testState02", true});
-        inputHandler.send(new Object[]{"1", "testState03", true});
-        inputHandler.send(new Object[]{"3", "testState01", true});
-        inputHandler.send(new Object[]{"3", "testState02", true});
-        inputHandler.send(new Object[]{"1", "testState01", true});
-        inputHandler.send(new Object[]{"1", "testState02", true});
-        inputHandler.send(new Object[]{"2", "testState01", true});
-        inputHandler.send(new Object[]{"2", "testState03", false});
-        inputHandler.send(new Object[]{"4", "testState01", false});
-        inputHandler.send(new Object[]{"4", "testState03", false});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState01", true});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState02", true});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState03", true});
+        inputHandler_send( inputHandler, new Object[]{"3", "testState01", true});
+        inputHandler_send( inputHandler, new Object[]{"3", "testState02", true});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState01", true});
+        inputHandler_send( inputHandler, new Object[]{"1", "testState02", true});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState01", true});
+        inputHandler_send( inputHandler, new Object[]{"2", "testState03", false});
+        inputHandler_send( inputHandler, new Object[]{"4", "testState01", false});
+        inputHandler_send( inputHandler, new Object[]{"4", "testState03", false});
 
         countDownLatch.await(1000, MILLISECONDS);
         AssertJUnit.assertEquals("Number of success events", 6, count);
         AssertJUnit.assertEquals("Event arrived", true, eventArrived);
         executionPlanRuntime.shutdown();
     }
-
+    
+    private  volatile int sendcount =0;
+    private final void inputHandler_send(InputHandler inputHandler, Object[] objects) throws InterruptedException {
+    	sendcount++;
+    	System.out.println(">>  " + sendcount +" >>>");
+    	inputHandler.send(  objects );
+    }
+    
 }
